@@ -1,0 +1,629 @@
+{
+	"info": {
+		"_postman_id": "914141af-730b-4c9f-905d-f54c07a08e1b",
+		"name": "Agroba",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13029228"
+	},
+	"item": [
+		{
+			"name": "Enterprises",
+			"item": [
+				{
+					"name": "Create Enterprise",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"JLB Company\",\r\n    \"director_name\":\"Suyarov Jamal\",\r\n    \"address\":\"Tashkent, Main street, 32\",\r\n    \"email\":\"suyaroff@gmail.com\",\r\n    \"website\":\"jlbcompany.com\",\r\n    \"phone\":\"+998994888515\",\r\n    \"owner_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/enterprises",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"enterprises"
+							]
+						},
+						"description": "### POST /api/enterprises\n\nThis endpoint is used to create a new enterprise.\n\n#### Request Body\n\n- `name`: (text) The name of the enterprise.\n    \n- `director_name`: (text) The name of the director of the enterprise.\n    \n- `address`: (text) The address of the enterprise.\n    \n- `email`: (text) The email address of the enterprise.\n    \n- `website`: (text) The website of the enterprise.\n    \n- `phone`: (text) The phone number of the enterprise.\n    \n- `owner_id`: (text) The ID of the owner of the enterprise.\n    \n\n#### Response\n\nThe response will be in JSON format with the following schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"data\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"id\": {\n          \"type\": \"integer\"\n        },\n        \"name\": {\n          \"type\": \"string\"\n        },\n        \"director_name\": {\n          \"type\": \"string\"\n        },\n        \"address\": {\n          \"type\": \"string\"\n        },\n        \"email\": {\n          \"type\": \"string\"\n        },\n        \"website\": {\n          \"type\": \"string\"\n        },\n        \"phone\": {\n          \"type\": \"string\"\n        },\n        \"owner_id\": {\n          \"type\": \"integer\"\n        },\n        \"created_at\": {\n          \"type\": \"string\"\n        },\n        \"updated_at\": {\n          \"type\": \"string\"\n        }\n      }\n    }\n  }\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Enterprise",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"JLB Company\",\r\n    \"director_name\":\"Suyarov Jamaletdin\",\r\n    \"address\":\"Tashkent, Main street, 1\",\r\n    \"phone\":\"+998990000000\",\r\n    \"website\":\"jl-company.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/enterprises/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"enterprises",
+								"1"
+							]
+						},
+						"description": "### Update Enterprise Details\n\nThis endpoint allows the client to update the details of an enterprise.\n\n#### Request Body\n\n- `name`: (string) The name of the enterprise.\n    \n- `director_name`: (string) The name of the director of the enterprise.\n    \n- `address`: (string) The address of the enterprise.\n    \n- `phone`: (string) The contact phone number of the enterprise.\n    \n- `website`: (string) The website of the enterprise.\n    \n\n#### Response Body (JSON Schema)\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"id\": {\n                    \"type\": \"integer\"\n                },\n                \"name\": {\n                    \"type\": \"string\"\n                },\n                \"director_name\": {\n                    \"type\": \"string\"\n                },\n                \"address\": {\n                    \"type\": \"string\"\n                },\n                \"email\": {\n                    \"type\": \"string\"\n                },\n                \"website\": {\n                    \"type\": \"string\"\n                },\n                \"phone\": {\n                    \"type\": \"string\"\n                },\n                \"owner_id\": {\n                    \"type\": \"integer\"\n                },\n                \"created_at\": {\n                    \"type\": \"string\"\n                },\n                \"updated_at\": {\n                    \"type\": \"string\"\n                }\n            }\n        }\n    }\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "List Enterprises",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/enterprises",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"enterprises"
+							]
+						},
+						"description": "This API endpoint makes an HTTP GET request to retrieve a list of enterprises. The response is in JSON format and includes an array of enterprise objects under the \"data\" key. Each enterprise object contains properties such as id, name, director_name, address, email, website, phone, owner_id, created_at, and updated_at. Additionally, the response includes pagination information under the \"links\" and \"meta\" keys, providing details about the current page, total number of items, and navigation links.\n\nSpecific Requirements:\n\n- The request should be made using the HTTP GET method.\n    \n- The response will have a status code of 200 on successful execution.\n    \n- The content type of the response will be \"application/json\".\n    \n\nExpected Response:\n\n``` json\n{\n    \"data\": [\n        {\n            \"id\": 0,\n            \"name\": \"\",\n            \"director_name\": \"\",\n            \"address\": \"\",\n            \"email\": \"\",\n            \"website\": \"\",\n            \"phone\": \"\",\n            \"owner_id\": 0,\n            \"created_at\": \"\",\n            \"updated_at\": \"\"\n        }\n    ],\n    \"links\": {\n        \"first\": \"\",\n        \"last\": \"\",\n        \"prev\": null,\n        \"next\": null\n    },\n    \"meta\": {\n        \"current_page\": 0,\n        \"from\": 0,\n        \"last_page\": 0,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"\",\n                \"active\": true\n            }\n        ],\n        \"path\": \"\",\n        \"per_page\": 0,\n        \"to\": 0,\n        \"total\": 0\n    }\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "Some Enterprise",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/enterprises/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"enterprises",
+								"1"
+							]
+						},
+						"description": "This endpoint retrieves information about a specific enterprise with the ID of 1. The response returns a JSON object with the following schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"data\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"id\": {\n          \"type\": \"integer\"\n        },\n        \"name\": {\n          \"type\": \"string\"\n        },\n        \"director_name\": {\n          \"type\": \"string\"\n        },\n        \"address\": {\n          \"type\": \"string\"\n        },\n        \"email\": {\n          \"type\": \"string\"\n        },\n        \"website\": {\n          \"type\": \"string\"\n        },\n        \"phone\": {\n          \"type\": \"string\"\n        },\n        \"owner_id\": {\n          \"type\": \"integer\"\n        },\n        \"created_at\": {\n          \"type\": \"string\"\n        },\n        \"updated_at\": {\n          \"type\": \"string\"\n        }\n      }\n    }\n  }\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Enterprise",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/enterprises/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"enterprises",
+								"1"
+							]
+						},
+						"description": "The `DELETE` request is used to delete the enterprise with the ID `1`. Upon successful execution, the API returns a `200` status with a JSON response containing a message.\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"message\": {\n      \"type\": \"string\"\n    }\n  }\n}\n\n ```"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login as Bob",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Save the authentication token in a collection variable\r",
+									"pm.collectionVariables.set(\"token\", pm.response.json().access_token);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"bob@mail.com\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/auth/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						},
+						"description": "### Login API\n\nThis API endpoint is used to authenticate and login a user.\n\n#### Request Body\n\n- `email` (string): The email address of the user.\n    \n- `password` (string): The password of the user.\n    \n\n#### Response\n\nUpon a successful request, the server responds with a status code of 200 and a JSON object containing the following keys:\n\n- `access_token` (string): The access token for the authenticated user.\n    \n- `token_type` (string): The type of token.\n    \n- `expires_in` (integer): The expiration time of the access token in seconds."
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/auth/logout",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						},
+						"description": "### POST /api/auth/logout\n\nThis endpoint is used to log out the authenticated user.\n\n#### Request Body\n\n- This request does not require a request body.\n    \n\n#### Response\n\n- Type: JSON\n    \n- { \"type\": \"object\", \"properties\": { \"message\": { \"type\": \"string\" } }}\n    \n- Status: 200 OK\n    \n- Content-Type: application/json\n    \n- message (string): A message indicating the result of the logout operation."
+					},
+					"response": []
+				},
+				{
+					"name": "Login as Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Save the authentication token in a collection variable\r",
+									"pm.collectionVariables.set(\"token\", pm.response.json().access_token);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@mail.com\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/auth/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						},
+						"description": "### API Request Description\n\nThis endpoint allows users to log in and obtain an access token for authentication. The request should be sent as an HTTP POST to the specified URL.\n\n#### Request Body\n\n- `email` (string): The email address of the user.\n    \n- `password` (string): The password of the user.\n    \n\n### API Response\n\nThe response to the request will be in JSON format with the following schema:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"access_token\": {\n            \"type\": \"string\"\n        },\n        \"token_type\": {\n            \"type\": \"string\"\n        },\n        \"expires_in\": {\n            \"type\": \"integer\"\n        }\n    }\n}\n\n ```\n\nThe response will include the `access_token`, `token_type`, and `expires_in` values upon successful authentication."
+					},
+					"response": []
+				},
+				{
+					"name": "Me",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/auth/me",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"me"
+							]
+						},
+						"description": "The endpoint `/api/auth/me` is a POST request used to retrieve the authenticated user's information. Upon a successful execution, the response will be in JSON format with the following schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"id\": {\n      \"type\": \"integer\"\n    },\n    \"name\": {\n      \"type\": \"string\"\n    },\n    \"email\": {\n      \"type\": \"string\"\n    },\n    \"email_verified_at\": {\n      \"type\": \"string\"\n    },\n    \"role\": {\n      \"type\": \"string\"\n    },\n    \"created_at\": {\n      \"type\": \"string\"\n    },\n    \"updated_at\": {\n      \"type\": \"string\"\n    }\n  }\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Save the authentication token in a collection variable\r",
+									"pm.collectionVariables.set(\"token\", pm.response.json().access_token);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/auth/refresh",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"refresh"
+							]
+						},
+						"description": "### Refresh Access Token\n\nThis endpoint allows the user to refresh the access token by making an HTTP POST request to {{host}}/api/auth/refresh.\n\n#### Request Body\n\n- `refresh_token` (text): The refresh token used to obtain a new access token.\n    \n\n#### Response\n\nUpon successful execution, the server will respond with a status code of 200 and a JSON object containing the refreshed access token details:\n\n- `access_token` (string): The new access token.\n    \n- `token_type` (string): The type of token.\n    \n- `expires_in` (integer): The expiration time of the access token in seconds."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employee",
+			"item": [
+				{
+					"name": "Create Employee",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"passport_number\": \"YM1136575\",\r\n    \"last_name\": \"O'Reilly\",\r\n    \"first_name\": \"Nathanial\",\r\n    \"middle_name\": \"Edna\",\r\n    \"position\": \"Real Estate Sales Agent\",\r\n    \"phone\": \"+998550001251\",\r\n    \"address\": \"78757 Jaylen Flat\\nSouth Ameliatown, RI 67586-3309\",\r\n    \"enterprise_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/employees",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"employees"
+							]
+						},
+						"description": "### POST /api/employees\n\nThis endpoint is used to create a new employee record.\n\n#### Request Body\n\n- `passport_number` (string, required): The passport number of the employee.\n    \n- `last_name` (string, required): The last name of the employee.\n    \n- `first_name` (string, required): The first name of the employee.\n    \n- `middle_name` (string, required): The middle name of the employee.\n    \n- `position` (string, required): The position or job title of the employee.\n    \n- `phone` (string, required): The phone number of the employee.\n    \n- `address` (string, required): The address of the employee.\n    \n- `enterprise_id` (integer, required): The ID of the enterprise to which the employee belongs.\n    \n\n#### Response (201 - Created)\n\nThe response will be a JSON object with the following schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"data\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"id\": {\n          \"type\": \"integer\"\n        },\n        \"passport_number\": {\n          \"type\": \"string\"\n        },\n        \"last_name\": {\n          \"type\": \"string\"\n        },\n        \"first_name\": {\n          \"type\": \"string\"\n        },\n        \"middle_name\": {\n          \"type\": \"string\"\n        },\n        \"position\": {\n          \"type\": \"string\"\n        },\n        \"phone\": {\n          \"type\": \"string\"\n        },\n        \"address\": {\n          \"type\": \"string\"\n        },\n        \"enterprise_id\": {\n          \"type\": \"integer\"\n        },\n        \"created_at\": {\n          \"type\": \"string\"\n        },\n        \"updated_at\": {\n          \"type\": \"string\"\n        }\n      }\n    }\n  }\n}\n\n ```\n\nThe response will contain the newly created employee record with the provided data."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Employee",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"passport_number\": \"AD1234567\",\r\n    \"last_name\": \"Суяров\",\r\n    \"first_name\": \"Джамал\",\r\n    \"middle_name\": \"Боходирович\",\r\n    \"position\": \"PHP Developer\",\r\n    \"phone\": \"+998994888515\",\r\n    \"address\": \"Tashkent street 77\",\r\n    \"enterprise_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/employees/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"employees",
+								"1"
+							]
+						},
+						"description": "### Update Employee Details\n\nThis endpoint allows the client to update the details of a specific employee.\n\n#### Request\n\n- Method: PUT\n    \n- URL: `{{host}}/api/employees/1`\n    \n- { \"passport_number\": \"AD1234567\", \"last_name\": \"Суяров\", \"first_name\": \"Джамал\", \"middle_name\": \"Боходирович\", \"position\": \"PHP Developer\", \"phone\": \"+998994888515\", \"address\": \"Tashkent street 77\", \"enterprise_id\": 1}\n    \n\n#### Response\n\nThe response will be a JSON object with the following schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"data\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"id\": { \"type\": \"integer\" },\n        \"passport_number\": { \"type\": \"string\" },\n        \"last_name\": { \"type\": \"string\" },\n        \"first_name\": { \"type\": \"string\" },\n        \"middle_name\": { \"type\": \"string\" },\n        \"position\": { \"type\": \"string\" },\n        \"phone\": { \"type\": \"string\" },\n        \"address\": { \"type\": \"string\" },\n        \"enterprise_id\": { \"type\": \"integer\" },\n        \"created_at\": { \"type\": \"string\" },\n        \"updated_at\": { \"type\": \"string\" }\n      }\n    }\n  }\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "List Employees",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/employees",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"employees"
+							]
+						},
+						"description": "### API Request Description\n\nThis endpoint makes an HTTP GET request to retrieve a list of employees from the server.\n\n### Request Body\n\nThis request does not require a request body.\n\n### Response Body\n\nThe response is a JSON object with the following schema:\n\n``` json\n{\n  \"data\": [\n    {\n      \"id\": \"number\",\n      \"passport_number\": \"string\",\n      \"last_name\": \"string\",\n      \"first_name\": \"string\",\n      \"middle_name\": \"string\",\n      \"position\": \"string\",\n      \"phone\": \"string\",\n      \"address\": \"string\",\n      \"enterprise_id\": \"number\",\n      \"created_at\": \"string\",\n      \"updated_at\": \"string\"\n    }\n  ],\n  \"links\": {\n    \"first\": \"string\",\n    \"last\": \"string\",\n    \"prev\": \"string\",\n    \"next\": \"string\"\n  },\n  \"meta\": {\n    \"current_page\": \"number\",\n    \"from\": \"number\",\n    \"last_page\": \"number\",\n    \"links\": [\n      {\n        \"url\": \"string\",\n        \"label\": \"string\",\n        \"active\": \"boolean\"\n      }\n    ],\n    \"path\": \"string\",\n    \"per_page\": \"number\",\n    \"to\": \"number\",\n    \"total\": \"number\"\n  }\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "Show Employee",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/employees/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"employees",
+								"1"
+							]
+						},
+						"description": "The API endpoint retrieves information about a specific employee with the ID of 1.\n\n### Response\n\nThe response will be in JSON format with the following schema:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"id\": {\n                    \"type\": \"integer\"\n                },\n                \"passport_number\": {\n                    \"type\": \"string\"\n                },\n                \"last_name\": {\n                    \"type\": \"string\"\n                },\n                \"first_name\": {\n                    \"type\": \"string\"\n                },\n                \"middle_name\": {\n                    \"type\": \"string\"\n                },\n                \"position\": {\n                    \"type\": \"string\"\n                },\n                \"phone\": {\n                    \"type\": \"string\"\n                },\n                \"address\": {\n                    \"type\": \"string\"\n                },\n                \"enterprise_id\": {\n                    \"type\": \"integer\"\n                },\n                \"created_at\": {\n                    \"type\": \"string\"\n                },\n                \"updated_at\": {\n                    \"type\": \"string\"\n                }\n            }\n        }\n    }\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Employee",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/employees/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"employees",
+								"1"
+							]
+						},
+						"description": "The API endpoint sends an HTTP DELETE request to delete the employee with ID 1.\n\n### Response\n\nThe response is in JSON format with a 200 status code. The response schema is as follows:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"message\": {\n            \"type\": \"string\"\n        }\n    }\n}\n\n ```"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "up",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/up",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"up"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "https://agroba.local",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Fncm9iYS5sb2NhbC9hcGkvbG9naW4iLCJpYXQiOjE3NDc3MDk3MzYsImV4cCI6MTc0NzcxMzMzNiwibmJmIjoxNzQ3NzA5NzM2LCJqdGkiOiJvaUp1WDJaTVNLZE5PSUJzIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.HC8Fa_HCwg6RNuO_ng-8hWMjJ-5aV4v78mtmfKXXK_Y",
+			"type": "string"
+		}
+	]
+}
