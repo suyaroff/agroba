@@ -5,6 +5,9 @@
 Agroba is a test task for creating a backend API that manages enterprises and their employees. 
 See detailed requirements in [TASK.md](TASK.md).
 
+## See on youtube
+https://www.youtube.com/watch?v=WGaVFkJKg3E
+
 ## Features
 - MVC architecture, with separate controllers and route files.
 - SQLite database for lightweight storage.
